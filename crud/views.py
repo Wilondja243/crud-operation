@@ -1,7 +1,7 @@
 from crud.db import db_connection
 from crud.models import Model
 
-Model().user_table()
+Model().user()
 
 class User:
     def __init__(self, first_name, last_name, age, email):
@@ -32,7 +32,7 @@ class User:
     
     def update_user(self):
         con, cursor = db_connection()
-        user_id = User.user_id('modifier')
+        user_id = User.user_id('update')
 
         cursor.execute(
             "SELECT * FROM Users WHERE id=?",
@@ -60,7 +60,7 @@ class User:
     @staticmethod
     def delete_user():
         con, cursor = db_connection()
-        user_id = User.user_id('supprmer')
+        user_id = User.user_id('delete')
         users = User.select_user()
 
         user = [user for user in users if user[0] == user_id]
@@ -76,16 +76,16 @@ class User:
     @staticmethod
     def user_id(a: str):
         try:
-            user_id = int(input(f"Enter user id {a} : "))
+            user_id = int(input(f"Enter a user_id to {a} : "))
             return user_id
         except:
-            print("L'id doit etre un nombre.")
+            print("Id can be a number.")
 
     def clean_data(self):
         if not self.age.isdigit():
-            print("\n ===> Age can be a number")
+            print("\n ===> Enter the action number")
             return False
         elif not self.email.endswith("@gmail.com"):
-            print("\n ===> Entrer un email valide.")
+            print("\n ===> Enter a valid email.")
             return False
         return True

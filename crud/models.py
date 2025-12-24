@@ -1,7 +1,7 @@
 from crud.db import db_connection
 
 class Model:
-    def user_table(self):
+    def user(self):
         con, cursor = db_connection()
 
         cursor.execute(

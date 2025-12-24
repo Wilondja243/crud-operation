@@ -1,54 +1,16 @@
 
 """
-    GESTION DES UTILISATEURS
+    USER MANAGEMENT
 """
 
-from operation.request import User
+from crud.views import User
+from services.action import actions
 
-def inputs():
-    first_name = input("Fist name: ")
-    last_name = input("Last name: ")
-    age = input("Age: ")
-    email = input("Email: ")
-
-    return (
-        first_name,
-        last_name,
-        age,
-        email
-    )
-
-def actions(action):
-    if action == '1':
-        users = User.select_user()
-        print(f"\n ==> Users list <=== \n")
-        if users:
-            for user in users:
-            
-                print(f"{user[0]} {user[1]} {user[2]} {user[3]} {user[4]}")
-        else:
-            print(f"Aucun utilisateur disponible {users}")
-
-    elif action == '2':
-        user = inputs()
-        if user:
-            User(*user).insert_user()
-        else:
-            print("\n ===> Incorect infos")
-    elif action == '3':
-        user = inputs()
-        if user:
-            User(*user).update_user()
-            
-    elif action == '4':
-        User.delete_user()
-    else:
-        print("\n ===> Enter a valid action.")
 
 while True:
     print(
         """
-            ========= GESTIONS DES UTILISATEURS ==========
+            ========= USER MANAGEMENT ==========
 
             1. Show users list
             2. Add user
@@ -59,15 +21,15 @@ while True:
     )
 
     try:
-        action = input("Entrer une action à effectuée : ")
+        action = input("Enter an action to perform : ")
 
         if action == '5':
-            print("==== FIN DU PROGRAMME ====")
+            print("==== END PROGRAMME ====")
             break
         
         if action.isdigit():
-            actions(action)
+            actions(action, User)
         else:
-            print("L'action doit etre un nombre dans la chaine.")
+            print("Enter the action number.")
     except Exception as e:
         print(str(e))
