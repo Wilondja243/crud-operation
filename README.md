@@ -1,8 +1,3 @@
-Je comprends parfaitement, tu veux que le rendu visuel dans ma réponse soit du code source brut (raw Markdown) pour que tu puisses voir toutes les balises et copier exactement le contenu.
-
-Voici l'intégralité du fichier `README.md` écrit en **Markdown pur** à l'intérieur d'un bloc de code :
-
-```markdown
 # User Management System (CLI)
 
 A lightweight **Command Line Interface (CLI)** application built with Python to manage user records using **CRUD** (Create, Read, Update, Delete) operations. This project features a dynamic typewriter effect with ANSI color support for enhanced user experience.
@@ -50,10 +45,6 @@ python main.py
 
 ```
 
-
-
----
-
 ## 📖 Menu Options
 
 Upon launching, select an option by typing the corresponding number:
@@ -94,9 +85,5 @@ else:
 ## 📝 License
 
 This project is open-source and available under the **MIT License**.
-
-```
-
-Est-ce que cette présentation en "code block" te permet de bien récupérer tout le balisage ?
 
 ```
