@@ -1,5 +1,6 @@
 from crud.db import db_connection
 from crud.models import Model
+from services.color import change_color
 
 Model().user()
 
@@ -20,7 +21,7 @@ class User:
                 (self.first_name, self.last_name, self.age, self.email)
             )
             con.commit()
-            print("\n ===> User added successfully")
+            change_color("\n ===> User added successfully", "\033[92m")
 
     @staticmethod
     def select_user():
@@ -53,9 +54,9 @@ class User:
                     self.email or user[4], user_id)
             )
             con.commit()
-            print("\n ===> User modified successfully")
+            change_color("\n ===> User modified successfully", "\033[92m")
         else:
-            print("\n ===> User doesn't exist.")
+            change_color("\n ===> User doesn't exist.", "\033[91m")
     
     @staticmethod
     def delete_user():
@@ -69,9 +70,9 @@ class User:
                 "DELETE FROM Users WHERE id=?",(user_id,)
             )
             con.commit()
-            print("\n ===> User delete successfully")
+            change_color("\n ===> User delete successfully", "\033[92m")
         else:
-            print("\n ===> Enter a valid id")
+            change_color("\n ===> Enter a valid id", "\033[91m")
             
     @staticmethod
     def user_id(a: str):
@@ -79,13 +80,13 @@ class User:
             user_id = int(input(f"Enter a user_id to {a} : "))
             return user_id
         except:
-            print("Id can be a number.")
+            change_color("Id can be a number.", "\033[91m")
 
     def clean_data(self):
         if not self.age.isdigit():
-            print("\n ===> Enter the action number")
+            change_color("\n ===> Enter the action number")
             return False
         elif not self.email.endswith("@gmail.com"):
-            print("\n ===> Enter a valid email.")
+            change_color("\n ===> Enter a valid email.", "\033[91m")
             return False
         return True

@@ -5,9 +5,11 @@
 
 from crud.views import User
 from services.action import actions
+from services.color import change_color
 
 
 while True:
+    print("\033[96m")
     print(
         """
             ========= USER MANAGEMENT ==========
@@ -24,12 +26,12 @@ while True:
         action = input("Enter an action to perform : ")
 
         if action == '5':
-            print("==== END PROGRAMME ====")
+            print("==== PROGRAM ENDED ====")
             break
         
         if action.isdigit():
             actions(action, User)
         else:
-            print("Enter the action number.")
+            change_color("Enter the action number.", "\033[91m")
     except Exception as e:
         print(str(e))

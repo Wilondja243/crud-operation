@@ -1,3 +1,4 @@
+from services.color import change_color
 
 def inputs():
     first_name = input("Fist name: ")
@@ -27,7 +28,7 @@ def actions(action, User):
         if user:
             User(*user).insert_user()
         else:
-            print("\n ===> Incorect infos")
+            change_color("\n ===> Incorect infos", "\033[0m")
     elif action == '3':
         user = inputs()
         if user:
@@ -36,4 +37,4 @@ def actions(action, User):
     elif action == '4':
         User.delete_user()
     else:
-        print("\n ===> Enter a valid action.")
+        change_color("\n ===> Enter a valid action.", "\033[0m")
